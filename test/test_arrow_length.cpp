@@ -76,9 +76,13 @@ TEST_SUITE("value_ptr")
         throw_if_invalid_size(std::numeric_limits<std::int32_t>::max());
         throw_if_invalid_size(max_arrow_length);
 
-        CHECK_THROWS(throw_if_invalid_size(-1));
-        CHECK_THROWS(throw_if_invalid_size(-1024));
-        CHECK_THROWS(throw_if_invalid_size(std::numeric_limits<std::int32_t>::min()));
+        if (config::enable_size_limit_runtime_check)
+        {
+            CHECK_THROWS(throw_if_invalid_size(-1));
+            CHECK_THROWS(throw_if_invalid_size(-1024));
+            CHECK_THROWS(throw_if_invalid_size(std::numeric_limits<std::int32_t>::min()));
+        }
+
         throw_if_invalid_size(-1, arrow_length_kind::offset);
         throw_if_invalid_size(-1024, arrow_length_kind::offset);
         throw_if_invalid_size(std::numeric_limits<std::int32_t>::min(), arrow_length_kind::offset);
