@@ -74,6 +74,7 @@ set(SPARROW_TESTS_SOURCES
     test_variable_size_binary_array.cpp
     test_run_end_encoded_array.cpp
     test_union_array.cpp
+    test_arrow_length.cpp
 )
 
 set(test_target "test_sparrow_lib")
