@@ -221,7 +221,7 @@ if (BUILD_TESTS)
 endif ()
 
 if (SPARROW_ENABLE_SIZE_CHECKS)
-    target_compile_definitions(sparrow INTERFACE SPARROW_ENABLE_SIZE_CHECKS 1)
+    target_compile_definitions(sparrow INTERFACE SPARROW_ENABLE_SIZE_CHECKS=1)
     message("-> sparrow config: size limit runtime checks enabled (SPARROW_ENABLE_SIZE_CHECKS=ON): sizes will be checked at runtime to be between zero and max(in64_t) (or max(int32_t if SPARROW_ENABLE_32BIT_SIZE_LIMIT=ON)")
 endif()
 
