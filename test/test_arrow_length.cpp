@@ -19,7 +19,10 @@
 
 #include "sparrow/types/arrow_length.hpp"
 
-
+#if defined(__GNUC__) && !defined(__clang__)
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wuseless-cast" // We want to be able to cast type aliases to their real types.
+#endif
 
 TEST_SUITE("value_ptr")
 {
@@ -116,3 +119,7 @@ TEST_SUITE("value_ptr")
     }
 
 }
+
+#if defined(__GNUC__) && !defined(__clang__)
+#    pragma GCC diagnostic pop
+#endif
